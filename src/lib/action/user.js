@@ -1,7 +1,7 @@
 import { User } from "../models/User";
 import { connnectDB } from "../mongooes/mongooes";
 
-const findandupdatedata = async (id,
+export const findandupdatedata = async (id,
     firstName,
     lastName,
     image_url,
