@@ -1,13 +1,42 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { use, useEffect, useState } from 'react'
 import Menu from './Menu'
-import { UserButton } from '@clerk/nextjs'
+import { UserButton, useUser } from "@clerk/nextjs";
 import { dark } from '@clerk/themes'
+import { set } from 'react-hook-form'
+import { connectToDB } from '@/lib/mongooes/mongooes'
+import Loader from '../Loader'
 
 const LeftSideBar = () => {
+  const { user, isLoaded } = useUser();
+
+  console.log(user)
+
+  const [loading, setLoading] = useState(true);
+
+  const [userData, setUserData] = useState({});
+
+  const getUser = async () => {
+    const response = await fetch(`/api/user/${user.id}`);
+    const data = await response.json();
+    setUserData(data);
+    console.log(data)
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (user) {
+      getUser();
+    }
+  }, [user]);
+
+
   return (
-    <div className="h-screen left-0 top-0 sticky overflow-auto px-10 py-6 flex flex-col gap-6 max-md:hidden 2xl:w-[350px] pr-20 custom-scrollbar">
+    
+
+    (<div className="h-screen left-0 top-0 sticky overflow-auto px-10 py-6 flex flex-col gap-6 max-md:hidden 2xl:w-[350px] pr-20 custom-scrollbar">
 
       {/* logo? */}
       <Link href="/">
@@ -58,6 +87,8 @@ const LeftSideBar = () => {
         <p className="text-light-1 text-body-bold">Manage Account</p>
       </div>
     </div>
+    )
+   
   )
 }
 

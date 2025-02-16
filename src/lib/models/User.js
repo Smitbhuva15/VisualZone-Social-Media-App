@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
-
-const userschema = mongoose.Schema(
+const userSchema = mongoose.Schema(
   {
     clerkId: {
       type: String,
@@ -30,31 +29,32 @@ const userschema = mongoose.Schema(
     },
     profilePhoto: {
       type: String,
-      required: false, 
+      required: false,
     },
     post: {
-      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
       default: [],
     },
     follower: {
-      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
       default: [],
     },
     following: {
-      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
       default: [],
     },
-    save: {
-      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+    savedPosts: {  
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
       default: [],
     },
     like: {
-      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
       default: [],
     },
   },
   { timestamps: true }
 );
 
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
-export const User = mongoose.models.User || mongoose.model('User', userschema);
+export default User;

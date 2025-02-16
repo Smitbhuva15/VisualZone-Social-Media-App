@@ -1,5 +1,5 @@
 
-import { User } from "../models/User";
+import User from "../models/User";
 import { connectToDB } from "../mongooes/mongooes";
 
 
@@ -14,7 +14,8 @@ export const createOrUpdateUser = async (
 ) => {
   try {
     await connectToDB();
-
+    
+    
 
     const user = await User.findOneAndUpdate(
       { clerkId: id },

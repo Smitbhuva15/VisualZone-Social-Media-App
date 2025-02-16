@@ -25,4 +25,4 @@ const postschema=mongoose.Schema({
 
 },{timestamps:true})
 
-export const Post=mongoose.model.Post || mongoose.model('Post',postschema)
+export default Post=mongoose.model.Post || mongoose.model('Post',postschema)

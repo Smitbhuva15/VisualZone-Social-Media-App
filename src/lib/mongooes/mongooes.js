@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-let isConnected = false;
+let isConnected = false; // Track connection status
 
 export const connectToDB = async () => {
   mongoose.set("strictQuery", true);
@@ -11,8 +11,8 @@ export const connectToDB = async () => {
   }
 
   try {
-  
     await mongoose.connect(process.env.MONGO_URL, {
+      dbName: "VibeZone",
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -21,7 +21,6 @@ export const connectToDB = async () => {
 
     console.log("MongoDB is connected");
   } catch (error) {
-    
-    console.error("Error connecting to MongoDB:", error);
+    console.log(error);
   }
 };
