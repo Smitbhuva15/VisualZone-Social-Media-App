@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-purple-2 text-light-1`}   >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-gray-800 text-light-1`}   >
       <main className="flex flex-row">
             <LeftSideBar />
             <MainContainer>
