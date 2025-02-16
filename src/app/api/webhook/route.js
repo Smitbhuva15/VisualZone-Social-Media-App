@@ -1,6 +1,7 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
-import { createOrUpdateUser, deleteUser } from "@lib/actions/user";
+import { createOrUpdateUser, deleteUser } from "@/lib/action/user";
+
 
 export async function POST(req) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
