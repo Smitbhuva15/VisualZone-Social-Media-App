@@ -26,6 +26,10 @@ const userschema = mongoose.Schema({
         type: String,
         required: true
     },
+    image_url: {
+        type: String,
+        required: true
+    },
     post: {
         type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
         default: []
@@ -46,6 +50,8 @@ const userschema = mongoose.Schema({
         type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
         default: []
     },
-})
+},
+{timestamps:true}
+)
 
-export const User=mongoose.model('User',userschema);
+export const User=mongoose.model.User || mongoose.model('User',userschema);
