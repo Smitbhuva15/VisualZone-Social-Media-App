@@ -2,11 +2,11 @@ import { User } from "../models/User";
 import { connnectDB } from "../mongooes/mongooes";
 
 export const findandupdatedata = async (id,
-    firstName,
-    lastName,
+    first_name,
+    last_name,
     image_url,
-    email,
-    userName) => {
+    email_addresses,
+    username) => {
 
     await connnectDB();
  try {
@@ -15,11 +15,11 @@ export const findandupdatedata = async (id,
         { clerkId: id },
         {
             $set: {
-                firstName,
-                lastName,
-                image_url,
-                email,
-                userName
+                firstName:first_name,
+                lastName:last_name,
+                image_url:image_url,
+                email: email_addresses,
+                userName:username
             }
         },
         { upsert: true, new: true }

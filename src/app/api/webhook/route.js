@@ -62,16 +62,7 @@ export async function POST(req) {
             evt?.data;
 
         try {
-            await findandupdatedata(
-                {
-                    id: id
-                    , firstName: first_name
-                    , lastName: last_name
-                    , image_url: image_url
-                    , email: email_addresses
-                    , userName: username
-                }
-            )
+            await findandupdatedata(id, first_name, last_name, image_url, email_addresses, username  )
 
             return NextResponse.json({ message: "user created successFully" }, { status: 200 })
 
