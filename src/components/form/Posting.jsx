@@ -18,40 +18,50 @@ export default function Posting({ post, apiEndpoint }) {
   } = useForm({
     defaultValues: post,
   });
- 
+
   const router = useRouter();
-  
+
   const handlePublish = async (data) => {
     // console.log(data)
- try {
-  const formdata = new FormData();
+    try {
+      const formdata = new FormData();
+      const newformdata = new FormData();
 
-  formdata.append("creatorId",post.creatorId )
-  formdata.append("caption",data.caption )
-  formdata.append("tag",data.tag)
+      newformdata.append("file", data.postPhoto[0])
+      newformdata.append('upload_preset', 'my-uploads');
+      const photourl = await fetch(`https://api.cloudinary.com/v1_1/dnprslnrx/image/upload`, {
+        method: 'POST',
+        body: newformdata
+      }).then(r => r.json());
 
-  if(data.postPhoto){
-  formdata.append("postphoto",data.postPhoto[0])
-  }
-  const response=await fetch(`api/post/new`,{
-    method:'POST',
-    body:formdata
-  })
+   console.log( photourl)
+      formdata.append("creatorId", post.creatorId)
+      formdata.append("caption", data.caption)
+      formdata.append("tag", data.tag)
+      formdata.append("postphoto", photourl.secure_url)
 
-  if(response.ok){
-    const data=await response.json();
-    console.log(data,"push other routes ,create successfully!!");
-    refresh()
-  }
-  else{
-    console.log("error found")
-  }
- } catch (error) {
-  console.log("Internal server error",error)
-  
- }
 
-   
+
+
+      const response = await fetch(`api/post/new`, {
+        method: 'POST',
+        body: formdata
+      })
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data, "push other routes ,create successfully!!");
+       
+      }
+      else {
+        console.log("error found")
+      }
+    } catch (error) {
+      console.log("Internal server error", error)
+
+    }
+
+
   };
 
   return (
@@ -65,12 +75,12 @@ export default function Posting({ post, apiEndpoint }) {
             height={200}
             className="object-cover rounded-lg"
           />
-        ):
-        (
-          <AddPhotoAlternateOutlined
-            sx={{ fontSize: "100px", color: "white" }}
-          />
-        )}
+        ) :
+          (
+            <AddPhotoAlternateOutlined
+              sx={{ fontSize: "100px", color: "white" }}
+            />
+          )}
         <p>Upload a photo</p>
       </label>
 
@@ -78,7 +88,7 @@ export default function Posting({ post, apiEndpoint }) {
         type="file"
         id="photo"
         className="hidden"
-       
+
         {...register("postPhoto", { required: true })}
       />
       {errors.postPhoto && <p className="text-red-500">Photo is required !!</p>}

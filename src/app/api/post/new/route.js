@@ -14,13 +14,14 @@ export async function POST(req) {
     let creatorId=data.get('creatorId');
     let caption=data.get('caption');
     let tag=data.get('tag');
-    console.log(postPhoto,creatorId,caption,tag)
+    // console.log(postPhoto,creatorId,caption,tag)
     
  const newpost=await Post.create( {
       creator:creatorId,
       caption,
-      tag
-
+      postPhoto:postPhoto,
+      tag,
+      
   });
 
 
