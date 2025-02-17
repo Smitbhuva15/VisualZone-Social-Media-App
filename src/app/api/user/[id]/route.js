@@ -1,17 +1,18 @@
-import User from '@/lib/models/User'
+
+import User from '../../../../lib/models/User';
 import { connectToDB } from '@/lib/mongooes/mongooes';
 import { NextResponse } from 'next/server';
 
 export async function GET(req, { params }) {
   await connectToDB();
-  
+ 
 
   const { id } = await params; 
   
   console.log(id);
   
   try {
-    const user = await User.findOne({ clerkId: id });
+    const user = await User.findOne({ email: id });
     console.log(user)
 
     if (!user) {

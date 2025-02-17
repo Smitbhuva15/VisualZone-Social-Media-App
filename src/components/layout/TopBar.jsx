@@ -32,7 +32,7 @@ const TopBar = () => {
 
       <button
         className="create-post-btn"
-        // onClick={() => router.push("/create-post")}
+        onClick={() => router.push("/create-post")}
       >
         <Add /> <p>Create A Post</p>
       </button>
