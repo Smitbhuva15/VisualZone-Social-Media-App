@@ -2,27 +2,24 @@
 import { CldImage } from 'next-cloudinary';
 import { AddPhotoAlternateOutlined } from "@mui/icons-material";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { from } from 'svix/dist/openapi/rxjsStub';
 
 export default function Posting({ post, apiEndpoint }) {
-  console.log(post)
-
- 
 
   const {
     register,
     handleSubmit,
+    refresh,
     watch,
     formState: { errors },
   } = useForm({
     defaultValues: post,
   });
-
-
-
+ 
+  const router = useRouter();
   
   const handlePublish = async (data) => {
     // console.log(data)
@@ -40,8 +37,11 @@ export default function Posting({ post, apiEndpoint }) {
     method:'POST',
     body:formdata
   })
+
   if(response.ok){
-    console.log("push other routes");
+    const data=await response.json();
+    console.log(data,"push other routes ,create successfully!!");
+    refresh()
   }
   else{
     console.log("error found")

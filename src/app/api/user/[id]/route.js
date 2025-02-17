@@ -9,7 +9,7 @@ export async function GET(req, { params }) {
 
   const { id } = await params; 
   
-  console.log(id);
+ 
   
   try {
     const user = await User.findOne({ email: id });

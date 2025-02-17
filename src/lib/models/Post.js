@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-const postschema=mongoose.Schema({
-    creator: {
+const postschema=new mongoose.Schema({
+   creator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
@@ -12,7 +12,7 @@ const postschema=mongoose.Schema({
       },
       postPhoto: {
         type: String,
-        required: true,
+        // required: true,
       },
       tag: {
         type: String,
@@ -25,4 +25,5 @@ const postschema=mongoose.Schema({
 
 },{timestamps:true})
 
-export default Post=mongoose.model.Post || mongoose.model('Post',postschema)
+const Post = mongoose.models.Post || mongoose.model("Post",postschema);
+export default Post;
