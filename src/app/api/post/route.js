@@ -4,9 +4,16 @@ import { NextResponse } from 'next/server';
 import React from 'react'
 
 export async function GET() {
+
   await connectToDB();
    try {
-    const data=await Post.find().populate("creator likePhoto").exec()
+    const data = await Post.find()
+  .sort({ createdAt: -1 }) 
+  .populate({
+    path: "creator likePhoto", 
+  
+  })
+  .exec();
     
     return NextResponse.json({post:data},{ status: 200 })
     

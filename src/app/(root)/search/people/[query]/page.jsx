@@ -40,6 +40,8 @@ export default function SearchPeople() {
       const response = await fetch(`/api/user/${user.primaryEmailAddress.emailAddress}`);
       const data = await response.json();
       setUserData(data.userdata);
+      setLoading(false);
+
    };
    
   

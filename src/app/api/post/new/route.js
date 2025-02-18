@@ -1,5 +1,6 @@
 
 import Post from '@/lib/models/Post';
+import User from '@/lib/models/User';
 import { connectToDB } from '@/lib/mongooes/mongooes';
 import { NextResponse } from 'next/server';
 import React from 'react'
@@ -24,8 +25,14 @@ export async function POST(req) {
       
   });
 
+  const updatedUser = await User.findByIdAndUpdate(
+    creatorId, 
+    { $push: { post: newpost._id } }, 
+    { new: true } 
+  );
 
-
+  
+ 
     return NextResponse.json(
       { message: "Post created successfully!" },
       { status: 200 }

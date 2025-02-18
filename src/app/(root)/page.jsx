@@ -39,15 +39,14 @@ export default function page() {
     setUserData(data.userdata);
  };
  
-
-  useEffect(()=>{
-    if(user){
-      getUser();
-      getallpost()
-    }
-   
-  },[user])
-  
+ useEffect(()=>{
+      if(user){
+        getUser();
+        getallpost()
+      }
+     
+    },[user])
+ 
 
   return (
     !isLoaded || loading 

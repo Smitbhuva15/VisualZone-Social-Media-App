@@ -56,3 +56,6 @@ export default function EditPost() {
    (<Posting post={postData} apiEndpoint={`/api/post/${id}`}/>)
   )
 }
+
+
+

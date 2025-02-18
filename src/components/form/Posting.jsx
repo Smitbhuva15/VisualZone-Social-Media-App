@@ -52,7 +52,7 @@ export default function Posting({ post, apiEndpoint }) {
 
       if (response.ok) {
         const data = await response.json();
-       
+        router.push('/')
         console.log(data, "push other routes ,create successfully!!");
        
       }
@@ -104,10 +104,9 @@ export default function Posting({ post, apiEndpoint }) {
       </label>
 
       <input
-        type="file"
-        id="postPhoto"
-        className="hidden"
-
+       id="photo"
+       type="file"
+       style={{ display: "none" }}
         {...register("postPhoto", { required: true })}
       />
       {errors.postPhoto && <p className="text-red-500">Photo is required !!</p>}
