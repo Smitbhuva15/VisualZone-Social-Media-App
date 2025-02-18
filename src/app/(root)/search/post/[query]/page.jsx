@@ -27,7 +27,7 @@ export default function SearchPost() {
       console.log(data.message)
       console.log(data.posts)
     } catch (error) {
-      console.log("serch post fetch error", error)
+      console.log("search post fetch error", error)
     }
     finally{
       setLoading(false);
