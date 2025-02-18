@@ -48,7 +48,7 @@ export const pageTitles = [
     title: "Create Post",
   },
   {
-    url: "/edit-post",
+    url: `/edit-post/`,
     title: "Edit Post",
   },
   {

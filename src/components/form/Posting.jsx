@@ -8,11 +8,11 @@ import { useForm } from "react-hook-form";
 import { from } from 'svix/dist/openapi/rxjsStub';
 
 export default function Posting({ post, apiEndpoint }) {
-
+//  console.log(post)
   const {
     register,
     handleSubmit,
-    refresh,
+  
     watch,
     formState: { errors },
   } = useForm({
@@ -22,7 +22,7 @@ export default function Posting({ post, apiEndpoint }) {
   const router = useRouter();
 
   const handlePublish = async (data) => {
-    // console.log(data)
+    console.log(data)
     try {
       const formdata = new FormData();
       const newformdata = new FormData();
@@ -34,7 +34,7 @@ export default function Posting({ post, apiEndpoint }) {
         body: newformdata
       }).then(r => r.json());
 
-   console.log( photourl)
+      // console.log( photourl)
       formdata.append("creatorId", post.creatorId)
       formdata.append("caption", data.caption)
       formdata.append("tag", data.tag)
@@ -43,7 +43,7 @@ export default function Posting({ post, apiEndpoint }) {
 
 
 
-      const response = await fetch(`api/post/new`, {
+      const response = await fetch(apiEndpoint, {
         method: 'POST',
         body: formdata
       })
@@ -68,13 +68,26 @@ export default function Posting({ post, apiEndpoint }) {
     <form className="flex flex-col gap-7 pb-24" onSubmit={handleSubmit(handlePublish)}>
       <label htmlFor="photo" className="flex gap-4 items-center text-light-1 cursor-pointer">
         {watch("postPhoto") ? (
-          <Image
-            src={URL.createObjectURL(watch("postPhoto")[0])}
-            alt="post"
-            width={250}
-            height={200}
-            className="object-cover rounded-lg"
-          />
+
+          typeof watch("postPhoto") === "string"?(
+            
+              <Image
+              src={post.postPhoto}
+              alt="post34"
+              width={250}
+              height={200}
+              className="object-cover rounded-lg"
+            />
+            ):(
+              <Image
+              src={URL.createObjectURL(watch("postPhoto")[0])}
+              alt="post"
+              width={250}
+              height={200}
+              className="object-cover rounded-lg"
+            />
+            )
+        
         ) :
           (
             <AddPhotoAlternateOutlined

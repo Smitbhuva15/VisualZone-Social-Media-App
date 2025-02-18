@@ -38,8 +38,7 @@ export default function page() {
     const data = await response.json();
     setUserData(data.userdata);
  };
- console.log(userData)
-
+ 
 
   useEffect(()=>{
     if(user){

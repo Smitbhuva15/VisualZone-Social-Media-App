@@ -8,7 +8,7 @@ export default function PostCrad({ post, creator, loggedInUser }) {
     const [isLiked,setIsLiked]=useState(false)
     const [isSaved,setIsSaved]=useState(false)
 
-   console.log(post, creator, loggedInUser)
+   
 
    
 

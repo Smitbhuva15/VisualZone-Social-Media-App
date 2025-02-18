@@ -35,6 +35,6 @@ export default function CreatePost() {
 
   return (
     !isLoaded || loading?(<Loader />):
-   (<Posting post={postData}/>)
+   (<Posting post={postData} apiEndpoint={`api/post/new`}/>)
   )
 }
