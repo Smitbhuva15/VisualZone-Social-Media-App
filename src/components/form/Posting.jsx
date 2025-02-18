@@ -19,11 +19,13 @@ export default function Posting({ post, apiEndpoint }) {
     defaultValues: post,
   });
 
+  const [isLoading,setIsLoading]=useState(false);
   const router = useRouter();
 
   const handlePublish = async (data) => {
-    console.log(data)
+    // console.log(data)
     try {
+      setIsLoading(true)
       const formdata = new FormData();
       const newformdata = new FormData();
 
@@ -50,6 +52,7 @@ export default function Posting({ post, apiEndpoint }) {
 
       if (response.ok) {
         const data = await response.json();
+       
         console.log(data, "push other routes ,create successfully!!");
        
       }
@@ -59,6 +62,9 @@ export default function Posting({ post, apiEndpoint }) {
     } catch (error) {
       console.log("Internal server error", error)
 
+    }
+    finally{
+      setIsLoading(false);
     }
 
 
@@ -99,7 +105,7 @@ export default function Posting({ post, apiEndpoint }) {
 
       <input
         type="file"
-        id="photo"
+        id="postPhoto"
         className="hidden"
 
         {...register("postPhoto", { required: true })}
@@ -140,12 +146,24 @@ export default function Posting({ post, apiEndpoint }) {
         {errors.tag && <p className="text-red-500">{errors.tag.message}</p>}
       </div>
 
-      <button
-        type="submit"
-        className="py-2.5 rounded-lg mt-10 bg-purple-1 hover:bg-pink-1 text-light-1"
-      >
-        Publish
-      </button>
+      {
+        isLoading?(
+          (
+            <button type="submit" className="py-2.5 rounded-lg mt-10 bg-purple-1 text-white flex items-center justify-center">
+                <div className="w-5 h-5 border-4 border-t-4 border-gray-200 border-t-blue-500 rounded-full animate-spin"></div>
+                <span className="ml-2">Please wait</span>
+            </button>
+
+        )
+        ):(
+          <button
+          type="submit"
+          className="py-2.5 rounded-lg mt-10 bg-purple-1 hover:bg-pink-1 text-light-1"
+        >
+          Publish
+        </button>
+        )
+      }
     </form>
   );
 
