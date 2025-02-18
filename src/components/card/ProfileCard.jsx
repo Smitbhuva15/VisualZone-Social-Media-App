@@ -3,16 +3,16 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import Loader from '../Loader';
 import { tabs } from '@/constants';
-import { PersonAddAlt } from '@mui/icons-material';
+import { PersonAddAlt, PersonRemove } from '@mui/icons-material';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function ProfileCard({ userData, activeTab }) {
-
+    const router=useRouter()
     const { user, isLoaded } = useUser();
     const [loading, setLoading] = useState(true);
     const [loginUser, setLoginUser] = useState({})
-
-
+    
     const getUser = async () => {
         const response = await fetch(`/api/user/${user.primaryEmailAddress.emailAddress}`);
         const data = await response.json();
@@ -25,6 +25,30 @@ export default function ProfileCard({ userData, activeTab }) {
             getUser();
         }
     }, [user])
+
+    const isFollow = userData?.follower?.find((item) => 
+        item===loginUser._id
+       )
+
+    const handleFollow = async () => {
+        try {
+            const res = await fetch(`/api/user/${loginUser._id}/follow/${userData._id}`,
+                {
+                    method:'GET'
+                }
+            )
+            if (res.ok) {
+                const data = await res.json();
+                console.log(data.message)
+                router.replace(`/profile/${userData}/posts`)
+            }
+            else {
+                console.log("server side error")
+            }
+        } catch (error) {
+            console.log("client error found")
+        }
+    }
 
     return (
         !isLoaded || loading ?
@@ -70,26 +94,39 @@ export default function ProfileCard({ userData, activeTab }) {
 
                         {loginUser._id !== userData._id &&
 
-                            <PersonAddAlt
-                                sx={{ color: "#7857FF", cursor: "pointer", fontSize: "40px" }}
-                            // onClick={() => handleFollow()}
-                            />
+                            (isFollow
+                                ?
+                                (
+                                    <PersonRemove
+                                        sx={{ color: "#7857FF", cursor: "pointer", fontSize: "40px" }}
+                                        onClick={() => handleFollow()}
+                                    />
+                                ) :
+                                (
+                                    (
+                                        <PersonAddAlt
+                                            sx={{ color: "#7857FF", cursor: "pointer", fontSize: "40px" }}
+                                            onClick={() => handleFollow()}
+                                        />
+                                    )
+                                )
+                            )
+
                         }
                     </div>
 
                     <div className="flex gap-6">
-                    {tabs.map((tab,i) => (
-                      <Link
-                        className={`tab ${
-                          activeTab === tab.name ? "bg-purple-1" : "bg-dark-2"
-                        }`}
-                        href={`/profile/${userData._id}/${tab.link}`}
-                        key={i}
-                      >
-                        {tab.name}
-                      </Link>
-                    ))}
-                  </div>
+                        {tabs.map((tab, i) => (
+                            <Link
+                                className={`tab ${activeTab === tab.name ? "bg-purple-1" : "bg-dark-2"
+                                    }`}
+                                href={`/profile/${userData._id}/${tab.link}`}
+                                key={i}
+                            >
+                                {tab.name}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             )
     )

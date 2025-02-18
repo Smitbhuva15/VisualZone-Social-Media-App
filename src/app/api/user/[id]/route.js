@@ -12,7 +12,8 @@ export async function GET(req, { params }) {
  
   
   try {
-    const user = await User.findOne({ email: id });
+    const user = await User.findOne({ email: id })
+
     console.log(user)
 
     if (!user) {
