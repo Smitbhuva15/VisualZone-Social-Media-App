@@ -59,7 +59,7 @@ export default function ProfilePage() {
    :
    (
     <div className="flex flex-col gap-9">
-    <ProfileCard userData={userData} activeTab="Posts" />
+    <ProfileCard userData={userData} id={id} activeTab="Posts" />
 
     <div className="flex flex-col gap-9">
     {userData?.post?.map((post) => (

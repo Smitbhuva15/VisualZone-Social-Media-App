@@ -12,6 +12,7 @@ const RightSideBar = () => {
         width={280}
         height={200}
         className="rounded-lg"
+        priority={false}
       />
       <p className="text-body-bold text-light-1">The Bag Spot</p>
       <p className="text-small-semibold text-light-2">
