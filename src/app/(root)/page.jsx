@@ -54,16 +54,21 @@ export default function page() {
     (<Loader />)
     :
     (
-      allPost.map((post)=>(
-        <PostCrad 
-         key={post._id}
-         post={post}
-         creator={post.creator}
-         loggedInUser={userData}
-         update={getUser}
-         updatepost={getallpost}
-        />
-      ))
+      <div className='flex flex-col gap-9'>
+        {
+           allPost.map((post)=>(
+            <PostCrad 
+             key={post._id}
+             post={post}
+             creator={post.creator}
+             loggedInUser={userData}
+             update={getUser}
+             updatepost={getallpost}
+            />
+          ))
+        }
+      </div>
+     
     )
   )
 }
