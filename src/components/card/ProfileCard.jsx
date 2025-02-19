@@ -14,7 +14,7 @@ export default function ProfileCard({  id, activeTab }) {
     const [loading, setLoading] = useState(true);
     const [loginUser, setLoginUser] = useState({})
 
-     console.log( id,activeTab)
+   
     const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
     const { data, error, isLoading } = useSWR(`/api/profileuser/${id}`, fetcher, {

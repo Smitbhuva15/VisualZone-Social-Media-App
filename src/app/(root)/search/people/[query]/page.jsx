@@ -68,7 +68,7 @@ export default function SearchPeople() {
         </div>
   
         {searchedUsers.map((person) => (
-          <UserCard key={person._id} userData={person} loggedInUser={userData}/>
+          <UserCard key={person._id} userData={person} query={query} loggedInUser={userData}  />
         ))}
 
 

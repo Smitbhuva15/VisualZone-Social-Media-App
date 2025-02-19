@@ -13,6 +13,12 @@ export async function GET(req, { params }) {
   
   try {
     const user = await User.findOne({ email: id })
+    .populate({
+      path:'like savedPosts',
+      populate:{
+        path:"creator"
+      }
+    })
 
     console.log(user)
 

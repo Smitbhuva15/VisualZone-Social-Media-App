@@ -60,6 +60,8 @@ export default function page() {
          post={post}
          creator={post.creator}
          loggedInUser={userData}
+         update={getUser}
+         updatepost={getallpost}
         />
       ))
     )

@@ -1,17 +1,58 @@
 "use client"
+
 import { Bookmark, BookmarkBorder, BorderColor, Delete, Favorite, FavoriteBorder } from '@mui/icons-material';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 
-export default function PostCrad({ post, creator, loggedInUser }) {
-    const [isLiked,setIsLiked]=useState(false)
-    const [isSaved,setIsSaved]=useState(false)
+export default function PostCrad({ post, creator, loggedInUser, update, updatepost }) {
 
+
+    // console.log(post)
+    // console.log(loggedInUser)
+
+    const isLiked = loggedInUser?.like?.find((item) => item._id === post._id);
+    const isSaved = loggedInUser?.savedPosts?.find((item) => item._id === post._id);
+    
    
+     
 
-   
+    const handelLike = async () => {
+        try {
+            const res = await fetch(`/api/user/${loggedInUser._id}/like/${post._id}`, {
+                method: 'GET',
 
+            })
+            if (res.ok) {
+                const data = await res.json();
+                console.log(data.message)
+                updatepost()
+                update()
+            }
+
+
+        } catch (error) {
+            console.log("not liked from client side")
+        }
+    }
+
+    const handelsave = async () => {
+        try {
+            const res = await fetch(`/api/user/${loggedInUser._id}/save/${post._id}`, {
+                method: 'GET',
+
+            })
+            if (res.ok) {
+                const data = await res.json();
+                console.log(data.message)
+                update()
+            }
+
+
+        } catch (error) {
+            console.log("not saved from client side")
+        }
+    }
 
     return (
         <div className="w-full max-w-xl rounded-lg flex flex-col gap-4 bg-dark-1 p-5 max-sm:gap-2">
@@ -62,26 +103,26 @@ export default function PostCrad({ post, creator, loggedInUser }) {
             </p>
 
             <div className="flex justify-between">
-        <div className="flex gap-2 items-center">
-          {!isLiked ? (
-            <FavoriteBorder sx={{ color: "white", cursor: "pointer" }}  />
-          ) : (
-            <Favorite sx={{ color: "red", cursor: "pointer" }} />
-          )}
-          <p className="text-light-1">{post. likePhoto.length}</p>
-        </div>
+                <div className="flex gap-2 items-center">
+                    {!isLiked ? (
+                        <FavoriteBorder sx={{ color: "white", cursor: "pointer" }} onClick={() => handelLike()} />
+                    ) : (
+                        <Favorite sx={{ color: "red", cursor: "pointer" }} onClick={() => handelLike()} />
+                    )}
+                    <p className="text-light-1">{post.likePhoto.length}</p>
+                </div>
 
-        {loggedInUser._id !== creator._id &&
-          (isSaved ? (
-            <Bookmark sx={{ color: "purple", cursor: "pointer" }}  />
-          ) : (
-            <BookmarkBorder sx={{ color: "white", cursor: "pointer" }}  />
-          ))}
+                {loggedInUser._id !== creator._id &&
+                    (isSaved ? (
+                        <Bookmark sx={{ color: "purple", cursor: "pointer" }} onClick={() => handelsave()} />
+                    ) : (
+                        <BookmarkBorder sx={{ color: "white", cursor: "pointer" }} onClick={() => handelsave()} />
+                    ))}
 
-          {loggedInUser._id === creator._id && (
-            <Delete sx={{ color: "white", cursor: "pointer" }}  />
-          )}
-      </div>
+                {loggedInUser._id === creator._id && (
+                    <Delete sx={{ color: "white", cursor: "pointer" }} />
+                )}
+            </div>
 
         </div>
     )

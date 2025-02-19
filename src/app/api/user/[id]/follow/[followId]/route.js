@@ -8,21 +8,31 @@ export async function GET(req, { params }) {
 
     await connectToDB();
     const { id } = params;
+   
+
     const { followId } = params;
+    console.log(id,"............/////////")
+    console.log(followId,"............/////////")
 
     try {
 
         const user = await User.findOne({ _id: id })
         const userToFollow = await User.findOne({ _id: followId })
 
+        console.log(user,"user............/////////")
+        console.log(personToFollow,"personToFollow............/////////")
+
         const isFollowing = userToFollow?.follower.find((item) => id === item.toString())
 
 
         if (isFollowing) {
+            console.log("if run.............")
             user.following = user?.following.filter((item) => { item.toString() !== followId })
             userToFollow.follower = userToFollow?.follower.filter((item) => { item.toString() !== id });
         }
         else {
+            console.log("else run...............")
+
             user?.following.push(followId)
             userToFollow?.follower.push(id)
         }
