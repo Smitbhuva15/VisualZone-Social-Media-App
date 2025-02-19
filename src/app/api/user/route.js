@@ -1,5 +1,5 @@
 
-import User from '../../../../lib/models/User';
+import User from '@/lib/models/User';
 import { connectToDB } from '@/lib/mongooes/mongooes';
 import { NextResponse } from 'next/server';
 
@@ -7,15 +7,7 @@ export async function GET(req) {
   await connectToDB();
 
   try {
-    const user = await User.findOne({ email: id })
-    .populate({
-      path:'like savedPosts',
-      populate:{
-        path:"creator"
-      }
-    })
-
-    console.log(user)
+    const user = await User.find()
 
     if (!user) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
