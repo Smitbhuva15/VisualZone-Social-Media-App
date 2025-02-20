@@ -54,6 +54,25 @@ export default function PostCrad({ post, creator, loggedInUser, update, updatepo
         }
     }
 
+    const handeldelete = async (postId) => {
+        try {
+            const res = await fetch(`/api/user/${loggedInUser._id}/delete/${postId}`, {
+                method: 'GET',
+
+            })
+            if (res.ok) {
+                const data = await res.json();
+                console.log(data.message)
+                updatepost()
+            }
+
+
+        } catch (error) {
+            console.log("not saved from client side")
+        }
+    }
+
+    
     return (
         <div className="w-full max-w-xl rounded-lg flex flex-col gap-4 bg-dark-1 p-5 max-sm:gap-2">
             <div className="flex justify-between">
@@ -120,7 +139,7 @@ export default function PostCrad({ post, creator, loggedInUser, update, updatepo
                     ))}
 
                 {loggedInUser._id === creator._id && (
-                    <Delete sx={{ color: "white", cursor: "pointer" }} />
+                    <Delete sx={{ color: "white", cursor: "pointer" }} onClick={()=>{handeldelete(post._id)}}/>
                 )}
             </div>
 

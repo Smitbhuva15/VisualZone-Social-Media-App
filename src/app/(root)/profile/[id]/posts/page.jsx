@@ -65,7 +65,7 @@ export default function ProfilePage() {
     <div className="flex flex-col gap-9">
     {userData?.post?.map((post) => (
 
-      < PostCrad  key={post._id} post={post} creator={post.creator} loggedInUser={loginUser}  update={getUser} />
+      < PostCrad  key={post._id} post={post} creator={post.creator} loggedInUser={loginUser}  update={getUser} updatepost={getuserdata}/>
     ))}
   </div>
     </div>
