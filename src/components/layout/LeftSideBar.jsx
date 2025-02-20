@@ -37,11 +37,11 @@ const LeftSideBar = () => {
   return (
     loading || !isLoaded ?( <></>):
 
-    (<div className="h-screen left-0 top-0 sticky overflow-auto px-10 py-6 flex flex-col gap-6 max-md:hidden 2xl:w-[350px] pr-20 custom-scrollbar">
+    (<div className="h-screen left-0 top-0 sticky overflow-auto px-10 py-6 flex flex-col gap-6 max-md:hidden 2xl:w-[350px] pr-20 custom-scrollbar"  style={{ background: '#202123' }}>
 
       {/* logo? */}
       <Link href={`/`}  >
-        <h6 className='text-6xl'>Visual Zone</h6>
+      <Image src="/assets/visual-logo.svg" alt="Visual Zone Logo" width={200} height={70} />
       </Link>
       
 

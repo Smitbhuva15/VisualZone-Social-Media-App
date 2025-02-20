@@ -19,6 +19,7 @@ const RightSideBar = () => {
       Explore Tolly Bags for stylish, durable, and functional bags perfect for everyday use. High-quality materials, trendy designs, and affordable prices. Visit us today to find your perfect bag!
       </p>
     </div>
+    
   </div>
   )
 }

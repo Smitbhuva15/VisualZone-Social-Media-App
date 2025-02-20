@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
 import { dark } from '@clerk/themes';
+import Image from 'next/image';
 
 
 
@@ -13,7 +14,15 @@ const TopBar = () => {
   const router=useRouter()
 
   return (
+      <div>
+   <div className='md:hidden flex'>
+   <Link href={`/`}  >
+      <Image src="/assets/visual-logo.svg" alt="Visual Zone Logo" width={200} height={70} />
+      </Link>
+   </div>
+
     <div className="flex justify-between items-center mt-6">
+     
         <div className="relative">
         <input
           type="text"
@@ -27,11 +36,12 @@ const TopBar = () => {
           onClick={() => router.push(`/search/post/${search}`)}
         />
       </div>
+      
 
     
 
       <button
-        className="create-post-btn"
+        className="create-post-btn "
         onClick={() => router.push("/create-post")}
       >
         <Add /> <p>Create A Post</p>
@@ -39,13 +49,11 @@ const TopBar = () => {
 
 
       <div className="flex gap-4 md:hidden">
-        <Link href={`/`}>
-          <Person sx={{ fontSize: "35px", color: "white" }} />
-        </Link>
-
         <UserButton appearance={{ baseTheme: dark }} afterSignOutUrl="/sign-in" />
       </div>
     </div>
+    </div>
+
   )
 }
 

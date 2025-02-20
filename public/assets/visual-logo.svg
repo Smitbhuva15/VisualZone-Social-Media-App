@@ -1,0 +1,52 @@
+<!-- Save as 'visual-zone-logo.svg' or embed directly in your HTML/JSX -->
+<svg
+  width="300"
+  height="100"
+  viewBox="0 0 300 100"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- 1) Define the Gradient -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F72585" />
+      <stop offset="100%" stop-color="#7209B7" />
+    </linearGradient>
+  </defs>
+
+  <!-- 2) First Wave Stroke -->
+  <path
+    d="M30 50 
+       C30 0,   120 0,   120 50 
+       C120 100, 210 100, 210 50"
+    stroke="url(#logoGradient)"
+    stroke-width="12"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- 3) Second Wave Stroke (slightly offset) -->
+  <path
+    d="M30 60 
+       C30 20,  120 20,  120 60 
+       C120 110, 210 110, 210 60"
+    stroke="url(#logoGradient)"
+    stroke-width="6"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- 4) "Visual Zone" Text -->
+  <text
+    x="130"
+    y="55"
+    fill="#FFFFFF"
+    font-size="28"
+    font-weight="bold"
+    font-family="Arial, sans-serif"
+  >
+    Visual Zone
+  </text>
+</svg>

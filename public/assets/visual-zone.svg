@@ -1,0 +1,58 @@
+<!-- Save this as, for example, 'visual-zone-logo.svg' or embed directly in your HTML -->
+<svg
+  width="300"
+  height="100"
+  viewBox="0 0 300 100"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Define the gradient for the orbit strokes and center dot -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF0080" />
+      <stop offset="100%" stop-color="#8A2BE2" />
+    </linearGradient>
+  </defs>
+
+  <!-- "Atom-like" orbits -->
+  <ellipse
+    cx="50"
+    cy="50"
+    rx="30"
+    ry="12"
+    transform="rotate(30, 50, 50)"
+    stroke="url(#logoGradient)"
+    stroke-width="5"
+    fill="none"
+  />
+  <ellipse
+    cx="50"
+    cy="50"
+    rx="30"
+    ry="12"
+    transform="rotate(-30, 50, 50)"
+    stroke="url(#logoGradient)"
+    stroke-width="5"
+    fill="none"
+  />
+
+  <!-- Center dot -->
+  <circle
+    cx="50"
+    cy="50"
+    r="6"
+    fill="url(#logoGradient)"
+  />
+
+  <!-- "Visual Zone" Text -->
+  <text
+    x="90"
+    y="56"
+    fill="#FFFFFF"
+    font-size="28"
+    font-weight="bold"
+    font-family="Arial, sans-serif"
+  >
+    Visual Zone
+  </text>
+</svg>

@@ -15,7 +15,7 @@ export default function UserCard({ userData, loggedInUser,updateuser }) {
 
 
     return (
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center rounded-2xl py-2 px-2"  style={{background:'#202123'}}>
             <Link className="flex gap-4 items-center" href={`/profile/${newUserData._id}/posts`}>
                 <Image
                     src={userData.profilePhoto}

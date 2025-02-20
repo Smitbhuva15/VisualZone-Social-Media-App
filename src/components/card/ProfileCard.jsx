@@ -130,7 +130,7 @@ export default function ProfileCard({  id, activeTab }) {
                     <div className="flex gap-6">
                         {tabs.map((tab, i) => (
                             <Link
-                                className={`tab ${activeTab === tab.name ? "bg-purple-1" : "bg-dark-2"
+                                className={`tab ${activeTab === tab.name ? "bg-pink-600" : "bg-dark-2"
                                     }`}
                                 href={`/profile/${data?.user._id}/${tab.link}`}
                                 key={i}

@@ -74,7 +74,7 @@ export default function PostCrad({ post, creator, loggedInUser, update, updatepo
 
     
     return (
-        <div className="w-full max-w-xl rounded-lg flex flex-col gap-4 bg-dark-1 p-5 max-sm:gap-2">
+        <div className="w-full max-w-xl rounded-lg flex flex-col gap-4  p-5 max-sm:gap-2" style={{background:'#202123'}}>
             <div className="flex justify-between">
                 <Link href={`/profile/${creator._id}/posts`}>
                     <div className="flex gap-3 items-center">

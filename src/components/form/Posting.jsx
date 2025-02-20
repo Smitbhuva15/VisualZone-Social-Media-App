@@ -148,7 +148,7 @@ export default function Posting({ post, apiEndpoint }) {
       {
         isLoading?(
           (
-            <button type="submit" className="py-2.5 rounded-lg mt-10 bg-purple-1 text-white flex items-center justify-center">
+            <button type="submit" className="py-2.5 rounded-lg mt-10 bg-pink-600 text-white flex items-center justify-center">
                 <div className="w-5 h-5 border-4 border-t-4 border-gray-200 border-t-blue-500 rounded-full animate-spin"></div>
                 <span className="ml-2">Please wait</span>
             </button>
@@ -157,7 +157,7 @@ export default function Posting({ post, apiEndpoint }) {
         ):(
           <button
           type="submit"
-          className="py-2.5 rounded-lg mt-10 bg-purple-1 hover:bg-pink-1 text-light-1"
+          className="py-2.5 rounded-lg mt-10 bg-pink-600 hover:bg-pink-1 text-light-1"
         >
           Publish
         </button>

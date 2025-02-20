@@ -37,7 +37,7 @@
   @apply w-full bg-dark-2 py-3 px-5 rounded-lg focus:outline-none text-light-1 text-small-semibold
 }
 .create-post-btn {
-  @apply flex items-center gap-2 rounded-lg py-2.5 px-3 bg-gradient-to-l from-pink-1 to-purple-1 text-light-1 text-small-semibold max-md:hidden
+  @apply flex items-center gap-2 rounded-lg py-2.5 px-3 bg-gradient-to-l from-custom-orange to-pink-1 text-light-1 text-small-semibold max-md:hidden
 }
 
 .search-icon {

@@ -94,6 +94,7 @@ export default {
     },
     extend: {
       colors: {
+        
         "purple-1": "#7857FF",
         "purple-2": "#1D1928",
         "pink-1": "#FF0073",
@@ -103,6 +104,7 @@ export default {
         "dark-1": "#121212",
         "dark-2": "#34303E",
         "blue-1": "#016FD5",
+      'custom-orange': '#F97316',
       }
     },
   },

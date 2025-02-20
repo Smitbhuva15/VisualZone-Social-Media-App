@@ -55,7 +55,7 @@ export default function SearchPost() {
       (
         <div className="flex flex-col gap-10">
           <div className="flex gap-6">
-            <Link className="tab bg-purple-1" href={`/search/post/${query}`}>
+            <Link className="tab bg-pink-600" href={`/search/post/${query}`}>
               Posts
             </Link>
             <Link className="tab bg-dark-2" href={`/search/people/${query}`}>

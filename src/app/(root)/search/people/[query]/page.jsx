@@ -62,7 +62,7 @@ export default function SearchPeople() {
           <Link className="tab bg-dark-2" href={`/search/post/${query}`}>
             Posts
           </Link>
-          <Link className="tab bg-purple-1" href={`/search/people/${query}`}>
+          <Link className="tab bg-pink-600" href={`/search/people/${query}`}>
             People
           </Link>
         </div>
