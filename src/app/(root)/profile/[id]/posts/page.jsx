@@ -52,6 +52,7 @@ export default function ProfilePage() {
     
    },[user,id])
    
+ 
 
   return (
    loading ?
@@ -64,7 +65,7 @@ export default function ProfilePage() {
     <div className="flex flex-col gap-9">
     {userData?.post?.map((post) => (
 
-      < PostCrad  key={post._id} post={post} creator={post.creator} loggedInUser={loginUser}/>
+      < PostCrad  key={post._id} post={post} creator={post.creator} loggedInUser={loginUser}  update={getUser} />
     ))}
   </div>
     </div>

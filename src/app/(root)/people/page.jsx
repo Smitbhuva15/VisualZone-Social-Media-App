@@ -14,12 +14,12 @@ export default function People() {
 
 
   const getAllUser = async () => {
-
+     
     const response = await fetch(`/api/user`, {
       method: 'GET'
     });
     const data = await response.json();
-    console.log(data)
+   
     setUserData(data.userdata);
     // console.log(data.userdata)
     setLoading(false);
@@ -31,6 +31,7 @@ export default function People() {
     const data = await response.json();
     setLoginData(data.userdata);
     setLoading(false);
+   
 
   }
 
@@ -39,7 +40,7 @@ export default function People() {
       getUser()
       getAllUser()
     }
-  }, []);
+  }, [user]);
 
 
   return (

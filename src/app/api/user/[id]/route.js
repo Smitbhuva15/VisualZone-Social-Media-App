@@ -20,7 +20,7 @@ export async function GET(req, { params }) {
       }
     })
 
-    console.log(user)
+  // console.log(user)
 
     if (!user) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });

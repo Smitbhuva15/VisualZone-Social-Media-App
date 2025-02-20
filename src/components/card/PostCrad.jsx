@@ -26,8 +26,8 @@ export default function PostCrad({ post, creator, loggedInUser, update, updatepo
             if (res.ok) {
                 const data = await res.json();
                 console.log(data.message)
-                updatepost()
                 update()
+                updatepost()
             }
 
 
@@ -109,7 +109,7 @@ export default function PostCrad({ post, creator, loggedInUser, update, updatepo
                     ) : (
                         <Favorite sx={{ color: "red", cursor: "pointer" }} onClick={() => handelLike()} />
                     )}
-                    <p className="text-light-1">{post.likePhoto.length}</p>
+                    <p className="text-light-1">{ post?.likePhoto?.length}</p>
                 </div>
 
                 {loggedInUser._id !== creator._id &&

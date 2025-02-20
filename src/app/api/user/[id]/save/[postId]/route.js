@@ -6,16 +6,16 @@ import { NextResponse } from 'next/server'; // Make sure this is imported
 export async function GET(req, { params }) {
 
     await connectToDB();
-    console.log("run........////////////////////////////////////")
+
     const id = params.id; 
-    console.log(id);
+    // console.log(id);
 
     const  postId  = params.postId;
-    console.log(postId);
+    // console.log(postId);
 
     try {
         const loginUser = await User.findOne({_id:id});
-        console.log(loginUser, ".........................");
+        // console.log(loginUser, ".........................");
 
         // if (!loginUser) {
         //     return NextResponse.json({ message: "User not found" }, { status: 404 });

@@ -8,7 +8,7 @@ export async function GET(req, { params }) {
   const { _id } = await params; 
   try {
     const user = await User.findOne({ _id: _id }).populate("follower following post savedPosts like")
-    console.log(user,"////////????????????????????")
+   
 
      return NextResponse.json({ message: "User data successfully fetched", userdata: user }, { status: 200 });
 
