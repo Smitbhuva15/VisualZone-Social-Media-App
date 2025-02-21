@@ -13,7 +13,7 @@ const LeftSideBar = () => {
   const { user, isLoaded } = useUser();
   
   
-
+  console.log(user)
   const [loading, setLoading] = useState(true);
 
   const [userData, setUserData] = useState({});
@@ -27,7 +27,7 @@ const LeftSideBar = () => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (isLoaded && user && user.primaryEmailAddress.emailAddress) {
       getUser();
     }
   }, [user]);

@@ -42,7 +42,7 @@ export default function SearchPost() {
    
   
     useEffect(()=>{
-      if(user){
+      if(isLoaded && user && user.primaryEmailAddress.emailAddress){
         getUser();
         getsearchpost()
       }

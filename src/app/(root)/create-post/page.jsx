@@ -21,7 +21,7 @@ export default function CreatePost() {
     };
   
     useEffect(() => {
-      if (user) {
+      if (isLoaded && user && user.primaryEmailAddress.emailAddress) {
         getUser();
       }
     }, [user]);

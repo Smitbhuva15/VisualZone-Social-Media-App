@@ -42,7 +42,7 @@ export default function SavePost() {
   
 
       useEffect(() => {
-        if (user) {
+        if (isLoaded && user && user.primaryEmailAddress.emailAddress) {
           getUser()
           getallpost()
         }

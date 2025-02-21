@@ -45,7 +45,7 @@ export default function ProfilePage() {
  };
  
   useEffect(()=>{
-     if(user){
+     if(isLoaded && user && user.primaryEmailAddress.emailAddress){
        getUser();
        getuserdata()
      }

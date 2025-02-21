@@ -36,7 +36,7 @@ export default function Followers() {
   };
 
   useEffect(() => {
-    if (user) {
+    if (isLoaded && user && user.primaryEmailAddress.emailAddress) {
       getUser();
       getloginUser()
     }

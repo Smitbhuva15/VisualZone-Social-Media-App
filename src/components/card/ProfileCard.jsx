@@ -31,7 +31,7 @@ export default function ProfileCard({  id, activeTab }) {
     };
 
     useEffect(() => {
-        if (user) {
+        if (isLoaded && user && user.primaryEmailAddress.emailAddress) {
             getUser();
         }
     }, [user])
