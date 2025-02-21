@@ -20,14 +20,14 @@ const LeftSideBar = () => {
 
   const getUser = async () => {
     
-    const response = await fetch(`/api/user/${user.primaryEmailAddress.emailAddress}`);
+    const response = await fetch(`/api/user/${user?.primaryEmailAddress?.emailAddress}`);
     const data = await response.json();
     setUserData(data.userdata);
     setLoading(false);
   };
 
   useEffect(() => {
-    if (isLoaded && user && user.primaryEmailAddress.emailAddress) {
+   if(isLoaded && user && user?.primaryEmailAddress?.emailAddress) {
       getUser();
     }
   }, [user]);
@@ -48,9 +48,9 @@ const LeftSideBar = () => {
       {/* photo and username */}
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2 items-center text-light-1">
-          <Link href={`/profile/${userData._id}/posts`}>
+          <Link href={`/profile/${userData?._id}/posts`}>
             <Image
-              src={userData.profilePhoto}
+              src={userData?.profilePhoto}
               alt="profile photo"
               width={50}
               height={50}
@@ -58,21 +58,21 @@ const LeftSideBar = () => {
             />
           </Link>
           <p className="text-small-bold">
-            {userData.firstName} {userData.lastName}
+            {userData?.firstName} {userData?.lastName}
           </p>
         </div>
 
         <div className="flex text-light-1 justify-between">
           <div className="flex flex-col items-center">
-            <p className="text-base-bold">{userData?.post.length}</p>
+            <p className="text-base-bold">{userData?.post?.length}</p>
             <p className="text-tiny-medium">Posts</p>
           </div>
           <div className="flex flex-col items-center">
-            <p className="text-base-bold">{userData?.follower.length}</p>
+            <p className="text-base-bold">{userData?.follower?.length}</p>
             <p className="text-tiny-medium">Followers</p>
           </div>
           <div className="flex flex-col items-center">
-            <p className="text-base-bold">{userData?.following.length}</p>
+            <p className="text-base-bold">{userData?.following?.length}</p>
             <p className="text-tiny-medium">Following</p>
           </div>
         </div>
