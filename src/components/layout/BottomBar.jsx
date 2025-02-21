@@ -2,13 +2,13 @@
 import { sidebarLinks } from '@/constants';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React from 'react'
 
 const BottomBar = () => {
 
   const router = useRouter();
-  const {pathname}=useRouter();
+    const pathname = usePathname();
 
   return (
     <div className="sticky flex bottom-0 z-20 w-full  px-6 py-3 items-center justify-between md:hidden" style={{background:'#202123'}}>

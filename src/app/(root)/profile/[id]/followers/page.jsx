@@ -56,7 +56,7 @@ export default function Followers() {
       (
         <div className="flex flex-col gap-9">
           <ProfileCard id={id} activeTab="Followers" />
-          <div className="flex flex-col gap-9">
+          <div className="flex flex-col gap-4">
             {userData?.follower?.map((person) => (
               <UserCard key={person._id} userData={person} loggedInUser={loginUser} />
             ))}
