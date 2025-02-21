@@ -17,7 +17,7 @@ const TopBar = () => {
       <div>
    <div className='md:hidden flex'>
    <Link href={`/`}  >
-      <Image src="/assets/visual-logo.svg" alt="Visual Zone Logo" width={200} height={70} />
+      <Image src="/assets/logo5.svg" alt="Visual Zone Logo" width={200} height={70} />
       </Link>
    </div>
 

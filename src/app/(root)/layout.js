@@ -7,6 +7,8 @@ import LeftSideBar from "@/components/layout/LeftSideBar";
 import RightSideBar from "@/components/layout/RightSideBar";
 import MainContainer from "@/components/layout/MainContainer";
 import BottomBar from "@/components/layout/BottomBar";
+import Head from "next/head";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +29,9 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-100`} style={{ background: '#2B2B2F' }}>
 
           <main className="flex flex-row min-h-screen">
