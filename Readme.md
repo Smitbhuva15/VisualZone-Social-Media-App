@@ -38,6 +38,8 @@
 
 - Users can view all their saved/bookmarked posts
 
+<br>
+
 ## 🔗 Follow System
 
 - Users can follow other users
@@ -45,3 +47,24 @@
 - Users can be followed back by others
 
 - Shows followers and following lists/counts
+
+<br>
+
+
+## 🛠️ Tech Stack 
+
+
+
+- **Frontend**: Next.js with React – for fast, dynamic UI with server-side rendering
+
+- **Backend**: Next.js API Routes – handles auth, post, like, follow logic within the same app
+
+- **Database**: MongoDB with Mongoose – flexible data storage for users, posts, and actions
+
+- **Cloudinary**: cloud image hosting and optimization for user-uploaded photos
+
+- **Tailwind CSS**: utility-first framework for clean, responsive UI
+
+- **Additional Libraries**: Several other libraries and tools are used for enhanced functionality, security, and better user experience (such as form handling, UI components, and state management).
+ 
+
