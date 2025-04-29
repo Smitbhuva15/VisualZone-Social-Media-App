@@ -66,5 +66,34 @@
 - **Tailwind CSS**: utility-first framework for clean, responsive UI
 
 - **Additional Libraries**: Several other libraries and tools are used for enhanced functionality, security, and better user experience (such as form handling, UI components, and state management).
- 
+
+
+# Website Preview
+
+<br>
+
+<p align="center">
+        <img src="public/website-demo/web1.png" width="750" alt="Website Demo">
+</p>
+
+<p align="center">
+        <img src="public/website-demo/web2.png" width="750" alt="Website Demo">
+</p>
+
+<p align="center">
+        <img src="public/website-demo/web3.png" width="750" alt="Website Demo">
+</p>
+
+<p align="center">
+        <img src="public/website-demo/web4.png" width="750" alt="Website Demo">
+</p>
+
+<p align="center">
+        <img src="public/website-demo/web5.png" width="750" alt="Website Demo">
+</p>
+
+<p align="center">
+        <img src="public/website-demo/web6.png" width="750" alt="Website Demo">
+</p>
+
 
